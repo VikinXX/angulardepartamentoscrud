@@ -1,0 +1,14 @@
+<h1>Insertar Departamento</h1>
+<form #formulario="ngForm" (onSubmit)="insertarDepartamento()">
+    <label>Numero: <input type="text" #numero/></label>
+    <br>
+    <label>Nombre: <input type="text" #nombre/></label>
+    <br>
+    <label>Localidad: <input type="text" #localidad/></label>
+    <br>
+    <button type="submit" class="btn btn-primary">Insertar</button>
+</form>
+
+@if(insertado){
+    <h1 style="color: green;">Departamento Insertado!!!!!!!</h1>
+}
