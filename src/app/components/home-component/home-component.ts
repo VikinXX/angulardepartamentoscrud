@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChangeDetectorRef } from '@angular/core';
 import { ServiceDepartamentos } from '../../services/Service.departamentos';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-home-component',
@@ -21,6 +22,14 @@ export class HomeComponent implements OnInit{
       this.departamentos = res;
       this._cdr.detectChanges();
     })
+  }
+
+  eliminar(id: number) {
+    this._serviceDepartamentos.deleteDepartamento(id).subscribe((res: any) => {
+      this.getDepartamentos();
+      this._cdr.detectChanges();
+    })
+    
   }
 
   ngOnInit(): void {

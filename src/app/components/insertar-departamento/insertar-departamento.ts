@@ -1,6 +1,8 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { ChangeDetectorRef } from '@angular/core';
 import { ServiceDepartamentos } from '../../services/Service.departamentos';
+import { Departamento } from '../../models/Departamento';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-insertar-departamento',
@@ -15,21 +17,27 @@ export class InsertarDepartamento {
   @ViewChild("localidad") localidad!: ElementRef;
   public insertado: boolean;
 
-  constructor(private _cdr: ChangeDetectorRef, private _serviceDepartamentos: ServiceDepartamentos) {
+  constructor(private _cdr: ChangeDetectorRef, private _serviceDepartamentos: ServiceDepartamentos, private _router: Router) {
     this.insertado = false;
   }
 
   insertarDepartamento() {
+    let num = parseInt(this.numero.nativeElement.value);
+    let nom = this.nombre.nativeElement.value;
+    let loc = this.localidad.nativeElement.value;
+
+    let dept = new Departamento(num, nom, loc);
+
     let departamento = {
-      numero: this.nombre.nativeElement.value,
-      nombre: this.nombre.nativeElement.value,
-      localidad: this.localidad.nativeElement.value
+      numero: num,
+      nombre: nom,
+      localidad: loc
     }
     
-    this._serviceDepartamentos.insertarDepartamento(departamento).subscribe((res: any) => {
-      this.insertado = true;
-      this._cdr.detectChanges();
-
+    this._serviceDepartamentos.insertarDepartamento(dept).subscribe((res: any) => {
+      //this.insertado = true;
+      //this._cdr.detectChanges();
+      this._router.navigate(['/']);
     })
   }
 

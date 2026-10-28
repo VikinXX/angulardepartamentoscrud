@@ -1,12 +1,12 @@
 <h1>Insertar Departamento</h1>
-<form #formulario="ngForm" (onSubmit)="insertarDepartamento()">
-    <label>Numero: <input type="text" #numero/></label>
+<form #formulario="ngForm" (ngSubmit)="insertarDepartamento()">
+    <label>Numero: <input name="numero" type="text" #numero class="form-control"/></label>
     <br>
-    <label>Nombre: <input type="text" #nombre/></label>
+    <label>Nombre: <input name="nombre" type="text" #nombre class="form-control"/></label>
     <br>
-    <label>Localidad: <input type="text" #localidad/></label>
+    <label>Localidad: <input name="localidad" type="text" #localidad class="form-control"/></label>
     <br>
-    <button type="submit" class="btn btn-primary">Insertar</button>
+    <button class="btn btn-primary">Insertar</button>
 </form>
 
 @if(insertado){

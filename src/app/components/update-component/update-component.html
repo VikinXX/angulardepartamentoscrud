@@ -1,0 +1,13 @@
+<h1>Update</h1>
+
+@if(id) {
+    <form #formulario (ngSubmit)="actualizarDepartamento()">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" #nombre placeholder="{{dep.nombre}}">
+        <br>
+        <label for="localidad">Localidad:</label>
+        <input type="text" id="localidad" name="localidad" #localidad placeholder="{{dep.localidad}}">
+        <br>
+        <button type="submit">Actualizar</button>
+    </form>
+}

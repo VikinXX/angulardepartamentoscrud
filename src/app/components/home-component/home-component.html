@@ -7,6 +7,9 @@
                 <th>Número</th>
                 <th>Nombre</th>
                 <th>Localidad</th>
+                <th>Actualizar</th>
+                <th>Detalles</th>
+                <th>Eliminar</th>
             </tr>
         </thead>
         <tbody>
@@ -15,6 +18,9 @@
                     <td>{{dep.numero}}</td>
                     <td>{{dep.nombre}}</td>
                     <td>{{dep.localidad}}</td>
+                    <td><a [routerLink]="['/Update/' + dep.numero]">Actualizar</a></td>
+                    <td><a [routerLink]="['/Details/' + dep.numero + '/' + dep.nombre + '/' + dep.localidad]">Detalles</a></td>
+                    <td><button (click)="eliminar(dep.numero)">Eliminar</button></td>
                 </tr>
             }
         </tbody>
